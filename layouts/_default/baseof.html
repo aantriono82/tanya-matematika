@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ if .IsHome }}{{ .Site.Title }} — {{ .Site.Params.tagline }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+  <meta name="description" content="{{ with .Params.ringkasan }}{{ . }}{{ else }}{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}{{ end }}">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  {{ $css := resources.Get "css/main.css" | minify | fingerprint }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+  <meta property="og:title" content="{{ .Title }} | {{ .Site.Title }}">
+  <meta property="og:description" content="{{ with .Params.ringkasan }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+  <meta property="og:type" content="{{ if and (eq .Section "tanya-jawab") .IsPage }}article{{ else }}website{{ end }}">
+  <meta property="og:url" content="{{ .Permalink }}">
+  {{ if and (eq .Section "tanya-jawab") .IsPage }}
+  <link rel="stylesheet" href="/katex/katex.min.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "QAPage",
+    "mainEntity": {
+      "@type": "Question",
+      "name": {{ .Title | jsonify | safeJS }},
+      "text": {{ .Title | jsonify | safeJS }},
+      "answerCount": 1,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": {{ with .Params.ringkasan }}{{ . | jsonify | safeJS }}{{ else }}{{ .Summary | jsonify | safeJS }}{{ end }},
+        "url": {{ .Permalink | jsonify | safeJS }},
+        "author": { "@type": "Person", "name": {{ .Site.Params.pengelola | jsonify | safeJS }} }
+      }
+    }
+  }
+  </script>
+  {{ end }}
+</head>
+<body>
+  {{ partial "header.html" . }}
+  <main>
+    {{ block "main" . }}{{ end }}
+  </main>
+  {{ partial "footer.html" . }}
+  {{ $kunci := .Site.Params.web3formsKey }}
+  {{ $aktif := and $kunci (ne $kunci .Site.Params.web3formsPlaceholder) }}
+  <script>window.__KUNCI_FORM__ = {{ if $aktif }}{{ $kunci | jsonify }}{{ else }}""{{ end }};</script>
+  {{ $js := resources.Get "js/main.js" | minify | fingerprint }}
+  <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
+  {{ if and (eq .Section "tanya-jawab") .IsPage }}
+  <script src="/katex/katex.min.js" defer></script>
+  <script src="/katex/auto-render.min.js" defer></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      if (window.renderMathInElement) {
+        renderMathInElement(document.querySelector(".isi-jawaban"), {
+          delimiters: [
+            { left: "$$", right: "$$", display: true },
+            { left: "\\[", right: "\\]", display: true },
+            { left: "$", right: "$", display: false },
+            { left: "\\(", right: "\\)", display: false }
+          ],
+          throwOnError: false
+        });
+      }
+    });
+  </script>
+  {{ end }}
+</body>
+</html>

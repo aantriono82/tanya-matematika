@@ -1,0 +1,10 @@
+<article class="kartu">
+  <div class="chip-baris">
+    {{ range .GetTerms "kelas" }}<a class="chip chip-kelas" href="{{ .RelPermalink }}">Kelas {{ .Data.Term }}</a>{{ end }}
+    {{ range .GetTerms "bab" }}<a class="chip chip-bab" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}
+    {{ with .Params.kesulitan }}<span class="chip chip-sulit-{{ lower . }}">{{ . }}</span>{{ end }}
+  </div>
+  <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+  <p>{{ with .Params.ringkasan }}{{ . }}{{ else }}{{ .Summary | plainify | truncate 150 }}{{ end }}</p>
+  <p class="meta">Ditanyakan oleh {{ .Params.penanya | default "Siswa" }} · {{ .Date.Format "2 January 2006" }}</p>
+</article>

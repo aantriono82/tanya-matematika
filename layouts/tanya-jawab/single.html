@@ -1,0 +1,54 @@
+{{ define "main" }}
+<div class="bungkus">
+  <article class="artikel">
+    <div class="chip-baris">
+      {{ range .GetTerms "kelas" }}<a class="chip chip-kelas" href="{{ .RelPermalink }}">Kelas {{ .Data.Term }}</a>{{ end }}
+      {{ range .GetTerms "bab" }}<a class="chip chip-bab" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>{{ end }}
+      {{ with .Params.kesulitan }}<span class="chip chip-sulit-{{ lower . }}">{{ . }}</span>{{ end }}
+    </div>
+    <h1>{{ .Title }}</h1>
+    <p class="meta-jawaban">Ditanyakan oleh <strong>{{ .Params.penanya | default "Siswa" }}</strong> · Terbit {{ .Date.Format "2 January 2006" }} · Dijawab oleh {{ .Site.Params.pengelola }} · ±{{ .ReadingTime }} menit baca</p>
+
+    {{ if .Params.contoh }}
+    <div class="banner-contoh">⚠ <strong>Contoh tampilan — bukan arsip awal.</strong> Halaman ini adalah contoh untuk pengujian tampilan Fase 1. Konten awal resmi (30 tanya jawab) disiapkan terpisah dan terbit setelah disetujui pengelola.</div>
+    {{ end }}
+
+    <div class="isi-jawaban">
+      {{ .Content }}
+    </div>
+
+    {{ $kunci := .Site.Params.web3formsKey }}
+    {{ $aktif := and $kunci (ne $kunci .Site.Params.web3formsPlaceholder) }}
+    <div class="aksi-jawaban">
+      <a class="tombol" target="_blank" rel="noopener" href="https://wa.me/?text={{ printf "%s — %s" .Title .Permalink | urlquery }}">Bagikan ke WhatsApp</a>
+      <button class="tombol sekunder" type="button" data-salin="{{ .Permalink }}">Salin Tautan</button>
+      <button class="tombol sekunder" type="button" data-membantu="{{ .Title }}" {{ if not $aktif }}disabled{{ end }}>Jawaban ini membantu</button>
+      <a class="tombol sekunder" href="/koreksi/?judul={{ .Title | urlquery }}&tautan={{ .Permalink | urlquery }}">Laporkan Koreksi</a>
+    </div>
+    <p class="pesan-aksi" data-pesan-aksi aria-live="polite"></p>
+  </article>
+
+  {{ $terkait := slice }}
+  {{ range .GetTerms "bab" }}
+    {{ range .Pages }}
+      {{ if ne .RelPermalink $.RelPermalink }}{{ $terkait = $terkait | append . }}{{ end }}
+    {{ end }}
+  {{ end }}
+  {{ if not $terkait }}
+    {{ range .GetTerms "kelas" }}
+      {{ range .Pages }}
+        {{ if ne .RelPermalink $.RelPermalink }}{{ $terkait = $terkait | append . }}{{ end }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+  {{ if $terkait }}
+  <section class="bagian" style="padding-top:6px">
+    <h2>Tanya Terkait</h2>
+    <p class="sub">Pertanyaan lain dalam bab yang sama.</p>
+    <div class="grid">
+      {{ range first 3 ($terkait | uniq) }}{{ partial "kartu.html" . }}{{ end }}
+    </div>
+  </section>
+  {{ end }}
+</div>
+{{ end }}

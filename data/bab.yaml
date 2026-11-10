@@ -1,0 +1,122 @@
+# Pembagian materi mengikuti Atiga (atiga.aantriono.com) secara ketat — Bagian 4 Cetak Biru.
+# Kelas 7: 13 bab · Kelas 8: 10 bab · Kelas 9: 7 bab · Total 30 bab.
+- kelas: 7
+  nama: "Bilangan Bulat"
+  slug: "bilangan-bulat"
+  deskripsi: "Bilangan positif, negatif, dan nol: operasi hitung serta KPK dan FPB."
+- kelas: 7
+  nama: "Bilangan Rasional"
+  slug: "bilangan-rasional"
+  deskripsi: "Pecahan dan desimal: membandingkan, mengurutkan, dan operasi hitungnya."
+- kelas: 7
+  nama: "Aritmetika Sosial"
+  slug: "aritmetika-sosial"
+  deskripsi: "Matematika dalam jual beli: diskon, untung-rugi, persen, bunga tabungan, dan pajak."
+- kelas: 7
+  nama: "Data dan Diagram"
+  slug: "data-dan-diagram"
+  deskripsi: "Mengumpulkan, menyajikan, dan membaca data dalam tabel dan diagram."
+- kelas: 7
+  nama: "Bentuk Aljabar"
+  slug: "bentuk-aljabar"
+  deskripsi: "Variabel, koefisien, dan konstanta: menyederhanakan dan mengoperasikan bentuk aljabar."
+- kelas: 7
+  nama: "Garis dan Sudut"
+  slug: "garis-dan-sudut"
+  deskripsi: "Hubungan antargaris, jenis-jenis sudut, dan pasangan sudut yang saling berpenyiku atau berpelurus."
+- kelas: 7
+  nama: "Persamaan Linear Satu Variabel"
+  slug: "persamaan-linear-satu-variabel"
+  deskripsi: "Memodelkan masalah sehari-hari menjadi persamaan satu variabel dan menemukan penyelesaiannya."
+- kelas: 7
+  nama: "Kesebangunan"
+  slug: "kesebangunan"
+  deskripsi: "Dua bangun yang sebangun, syarat segitiga sebangun, dan menghitung sisi yang belum diketahui."
+- kelas: 7
+  nama: "Pertidaksamaan Linear Satu Variabel"
+  slug: "pertidaksamaan-linear-satu-variabel"
+  deskripsi: "Tanda pertidaksamaan, menyelesaikan PtLSV, dan himpunan penyelesaian pada garis bilangan."
+- kelas: 7
+  nama: "Pola Bilangan"
+  slug: "pola-bilangan"
+  deskripsi: "Keteraturan susunan dan barisan bilangan, serta menentukan rumus suku ke-n."
+- kelas: 7
+  nama: "Proyek Penguatan Numerasi dan Literasi"
+  slug: "proyek-penguatan-numerasi-dan-literasi"
+  deskripsi: "Proyek matematika berbasis masalah nyata untuk menguatkan kemampuan numerasi dan literasi."
+- kelas: 7
+  nama: "Rasio"
+  slug: "rasio"
+  deskripsi: "Membandingkan dua besaran, rasio senilai dan berbalik nilai, serta menghitung skala peta."
+- kelas: 7
+  nama: "Segitiga dan Segiempat"
+  slug: "segitiga-dan-segiempat"
+  deskripsi: "Sifat-sifat segitiga dan segiempat, serta keliling dan luasnya, termasuk bangun gabungan."
+- kelas: 8
+  nama: "Bilangan Berpangkat"
+  slug: "bilangan-berpangkat"
+  deskripsi: "Konsep eksponen dan sifat-sifat operasi bilangan berpangkat positif, negatif, dan nol."
+- kelas: 8
+  nama: "Bentuk Akar"
+  slug: "bentuk-akar"
+  deskripsi: "Menyederhanakan bentuk akar, melakukan operasi aritmetika, dan merasionalkan penyebut."
+- kelas: 8
+  nama: "Bentuk Baku"
+  slug: "bentuk-baku"
+  deskripsi: "Menuliskan bilangan yang sangat besar atau sangat kecil dalam notasi ilmiah (bentuk baku)."
+- kelas: 8
+  nama: "Relasi dan Fungsi"
+  slug: "relasi-dan-fungsi"
+  deskripsi: "Membedakan relasi dan fungsi, menyajikannya, serta menghitung nilai fungsi."
+- kelas: 8
+  nama: "Persamaan Garis Lurus"
+  slug: "persamaan-garis-lurus"
+  deskripsi: "Menentukan gradien, menggambar grafik garis lurus, dan menyusun persamaan garis."
+- kelas: 8
+  nama: "SPLDV"
+  slug: "spldv"
+  deskripsi: "Sistem Persamaan Linear Dua Variabel dengan metode eliminasi, substitusi, dan grafik."
+- kelas: 8
+  nama: "Teorema Pythagoras"
+  slug: "teorema-pythagoras"
+  deskripsi: "Hubungan sisi-sisi segitiga siku-siku, tripel Pythagoras, dan menghitung jarak antartitik."
+- kelas: 8
+  nama: "Statistika"
+  slug: "statistika"
+  deskripsi: "Ukuran pemusatan data (mean, median, modus) dan ukuran penyebaran data sederhana."
+- kelas: 8
+  nama: "Peluang"
+  slug: "peluang"
+  deskripsi: "Titik sampel dan ruang sampel, serta peluang teoretis dan empiris suatu kejadian."
+- kelas: 8
+  nama: "Proyek Penguatan Aplikasi Kontekstual"
+  slug: "proyek-penguatan-aplikasi-kontekstual"
+  deskripsi: "Penerapan materi Kelas 8 dalam proyek numerasi kontekstual dan pemecahan masalah sehari-hari."
+- kelas: 9
+  nama: "Transformasi"
+  slug: "transformasi"
+  deskripsi: "Empat transformasi geometri: refleksi, translasi, rotasi, dan dilatasi pada bidang koordinat."
+- kelas: 9
+  nama: "Kekongruenan"
+  slug: "kekongruenan"
+  deskripsi: "Syarat dan sifat dua bangun yang kongruen serta pembuktian kekongruenan segitiga."
+- kelas: 9
+  nama: "Perubahan Proporsional"
+  slug: "perubahan-proporsional"
+  deskripsi: "Pengaruh perubahan ukuran bangun datar dan bangun ruang terhadap keliling, luas, dan volumenya."
+- kelas: 9
+  nama: "Lingkaran"
+  slug: "lingkaran"
+  deskripsi: "Unsur-unsur lingkaran, keliling, luas, panjang busur, luas juring, dan garis singgung lingkaran."
+- kelas: 9
+  nama: "Bangun Ruang Sisi Datar"
+  slug: "bangun-ruang-sisi-datar"
+  deskripsi: "Luas permukaan dan volume kubus, balok, prisma, dan limas beserta jaring-jaringnya."
+- kelas: 9
+  nama: "Bangun Ruang Sisi Lengkung"
+  slug: "bangun-ruang-sisi-lengkung"
+  deskripsi: "Sifat, luas permukaan, dan volume tabung, kerucut, dan bola dalam kehidupan sehari-hari."
+- kelas: 9
+  nama: "Review Penguatan Asesmen Akhir"
+  slug: "review-penguatan-asesmen-akhir"
+  deskripsi: "Rangkuman materi inti dan pembahasan soal persiapan Asesmen Akhir dan Ujian Sekolah."

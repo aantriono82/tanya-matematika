@@ -1,0 +1,30 @@
+{{ define "main" }}
+<div class="bungkus">
+  <div class="judul-halaman">
+    {{ if eq .Data.Plural "kelas" }}<h1>Kelas {{ .Data.Term }}</h1>{{ else }}<h1>{{ .Title }}</h1>{{ end }}
+    {{ with .Description }}<p>{{ . }}</p>{{ end }}
+    {{ with .Content }}<div>{{ . }}</div>{{ end }}
+  </div>
+  {{ if eq .Data.Plural "kelas" }}
+  <section class="bagian" style="padding-top:18px">
+    <h2>Bab di Kelas {{ .Data.Term }}</h2>
+    <div class="grid">
+      {{ $knum := int .Data.Term }}
+      {{ range hugo.Data.bab }}{{ if eq .kelas $knum }}
+      <div class="kartu kartu-kategori">
+        <h3><a href="/bab/{{ .slug }}/" style="color:inherit">{{ .nama }}</a></h3>
+        <p>{{ .deskripsi }}</p>
+      </div>
+      {{ end }}{{ end }}
+    </div>
+  </section>
+  {{ end }}
+  <section class="bagian" style="padding-top:26px">
+    <h2>Tanya Jawab</h2>
+    <div class="grid">
+      {{ range .Pages }}{{ partial "kartu.html" . }}{{ end }}
+    </div>
+    {{ if not .Pages }}<p>Belum ada tanya jawab di bagian ini. Silakan ajukan pertanyaan pertama melalui halaman <a href="/bertanya/">Bertanya</a>.</p>{{ end }}
+  </section>
+</div>
+{{ end }}

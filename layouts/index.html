@@ -1,0 +1,71 @@
+{{ define "main" }}
+<div class="hero">
+  <div class="bungkus">
+    <h1>{{ .Site.Title }}</h1>
+    <p class="tagline">{{ .Site.Params.tagline }}</p>
+    <form class="pencarian-besar" action="/cari/" method="get" role="search">
+      <input type="search" name="q" placeholder="Cari pertanyaan… misalnya: pythagoras, gradien, menyederhanakan akar" aria-label="Cari pertanyaan">
+      <button type="submit">Cari</button>
+    </form>
+    <div class="jaminan">
+      <span>✓ Dijawab langkah demi langkah</span>
+      <span>✓ Tanpa perlu akun</span>
+      <span>✓ Identitas penanya dirahasiakan</span>
+    </div>
+  </div>
+</div>
+
+<div class="bungkus">
+  <section class="bagian">
+    <h2>Jelajahi per Kelas &amp; Bab</h2>
+    <p class="sub">Pembagian materi mengikuti bab-bab pada platform Atiga — pilih kelasmu, lalu bab yang sedang kamu pelajari.</p>
+    {{ $semua := where .Site.RegularPages "Section" "tanya-jawab" }}
+    <div class="grid grid-kelas">
+      {{ range $k := slice 7 8 9 }}
+      <div class="kartu kartu-kelas">
+        <h3><a href="/kelas/{{ $k }}/" style="color:inherit">Kelas {{ $k }}</a></h3>
+        <ul class="daftar-bab">
+          {{ range hugo.Data.bab }}{{ if eq .kelas $k }}
+          {{ $slug := .slug }}{{ $n := 0 }}
+          {{ range $semua }}{{ if in (.Params.bab | default slice) $slug }}{{ $n = add $n 1 }}{{ end }}{{ end }}
+          <li><a href="/bab/{{ $slug }}/">{{ .nama }}</a> <span class="jumlah-bab">{{ $n }}</span></li>
+          {{ end }}{{ end }}
+        </ul>
+      </div>
+      {{ end }}
+    </div>
+  </section>
+
+  {{ $jawaban := where .Site.RegularPages "Section" "tanya-jawab" }}
+  <section class="bagian">
+    <h2>Terbaru</h2>
+    <p class="sub">Tanya jawab yang paling akhir diterbitkan.</p>
+    <div class="grid">
+      {{ range first 6 $jawaban }}{{ partial "kartu.html" . }}{{ end }}
+    </div>
+    {{ if not $jawaban }}<p>Belum ada tanya jawab yang diterbitkan. Jadilah penanya pertama melalui halaman <a href="/bertanya/">Bertanya</a>.</p>{{ end }}
+  </section>
+
+  {{ $populer := where $jawaban "Params.populer" true }}
+  {{ if $populer }}
+  <section class="bagian">
+    <h2>Paling Membantu</h2>
+    <p class="sub">Pilihan redaksi dari tanya jawab yang paling banyak membantu pembaca.</p>
+    <div class="grid">
+      {{ range first 6 $populer }}{{ partial "kartu.html" . }}{{ end }}
+    </div>
+  </section>
+  {{ end }}
+
+  <section class="bagian">
+    <h2>Cara Bertanya</h2>
+    <p class="sub">Tanpa akun, tanpa ribet — dan pertanyaanmu tidak tampil ke publik sebelum dijawab.</p>
+    <div class="langkah">
+      <div class="kartu"><div class="no">1</div><h3>Kirim pertanyaan</h3><p>Isi formulir dengan nama samaran, pilih kelas dan bab, lalu tuliskan soalmu dengan lengkap — tuliskan juga keterangan gambarnya bila soalnya bergambar.</p></div>
+      <div class="kartu"><div class="no">2</div><h3>Diseleksi &amp; dijawab</h3><p>Pertanyaan diseleksi redaksi, lalu dijawab langkah demi langkah lengkap dengan konsep kunci dan soal latihan serupa.</p></div>
+      <div class="kartu"><div class="no">3</div><h3>Terbit &amp; diberitahu</h3><p>Jawaban terbit setelah ditinjau guru. Bila kamu meninggalkan email, kamu akan diberitahu tautan jawabannya.</p></div>
+    </div>
+    <p style="margin-top:22px"><a class="tombol" href="/bertanya/">Ajukan Pertanyaan</a></p>
+  </section>
+</div>
+{{ end }}

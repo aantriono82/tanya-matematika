@@ -1,0 +1,6 @@
+{{ $id := .Get "id" }}
+{{ $judul := .Get "judul" | default "Applet GeoGebra interaktif" }}
+<div class="geogebra-bingkai">
+  <iframe src="https://www.geogebra.org/material/iframe/id/{{ $id }}/width/800/height/450/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ld/false/sri/true/at/auto" width="800" height="450" allowfullscreen loading="lazy" title="{{ $judul }}"></iframe>
+</div>
+<p class="keterangan-applet">Applet GeoGebra interaktif — geser titik-titiknya dan amati yang berubah. Bila applet tidak tampil, <a href="https://www.geogebra.org/m/{{ $id }}" target="_blank" rel="noopener">buka applet ini langsung di GeoGebra</a>.</p>

@@ -1,0 +1,12 @@
+<header class="situs">
+  <div class="header-dalam">
+    <a class="logo" href="/">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="2" y="2" width="60" height="60" rx="14" fill="#2563EB"/><path d="M18 46 L46 46 L46 18 Z" fill="none" stroke="#ffffff" stroke-width="4" stroke-linejoin="round"/><path d="M38 46 L46 46 L46 38" fill="none" stroke="#F97316" stroke-width="4"/><circle cx="18" cy="46" r="3.5" fill="#F97316"/></svg>
+      <span><span class="nama">{{ .Site.Title }}</span><span class="slogan-kecil">tanya-matematika.aantriono.com</span></span>
+    </a>
+    <nav class="utama">
+      {{ range .Site.Menus.main }}<a href="{{ .URL }}">{{ .Name }}</a>{{ end }}
+      <a class="tombol-bertanya" href="/bertanya/">Bertanya</a>
+    </nav>
+  </div>
+</header>

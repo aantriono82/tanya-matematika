@@ -1,0 +1,22 @@
+{{- $daftar := slice -}}
+{{- range where .Site.RegularPages "Section" "tanya-jawab" -}}
+  {{- $kelas := "" -}}
+  {{- with .Params.kelas }}{{ $kelas = index . 0 }}{{ end -}}
+  {{- $babSlug := "" -}}
+  {{- with .Params.bab }}{{ $babSlug = index . 0 }}{{ end -}}
+  {{- $babNama := $babSlug -}}
+  {{- range .GetTerms "bab" }}{{ $babNama = .LinkTitle }}{{ end -}}
+  {{- $daftar = $daftar | append (dict
+      "judul" .Title
+      "tautan" .RelPermalink
+      "kelas" $kelas
+      "bab" $babNama
+      "kesulitan" (.Params.kesulitan | default "")
+      "tags" (.Params.tags | default slice)
+      "ringkasan" (.Params.ringkasan | default "")
+      "isi" (.Plain | truncate 3000)
+      "penanya" (.Params.penanya | default "Siswa")
+      "tanggal" (.Date.Format "2006-01-02")
+  ) -}}
+{{- end -}}
+{{ $daftar | jsonify }}

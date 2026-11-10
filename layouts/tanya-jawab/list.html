@@ -1,0 +1,53 @@
+{{ define "main" }}
+<div class="bungkus">
+  <div class="judul-halaman">
+    <h1>{{ .Title }}</h1>
+    {{ with .Description }}<p>{{ . }}</p>{{ end }}
+  </div>
+
+  <form class="filter-arsip" id="filter-arsip" aria-label="Saring tanya jawab">
+    <div>
+      <label for="f-kelas">Kelas</label>
+      <select id="f-kelas" data-filter="kelas">
+        <option value="">Semua kelas</option>
+        <option value="7">Kelas 7</option>
+        <option value="8">Kelas 8</option>
+        <option value="9">Kelas 9</option>
+      </select>
+    </div>
+    <div>
+      <label for="f-bab">Bab</label>
+      <select id="f-bab" data-filter="bab">
+        <option value="">Semua bab</option>
+        {{ range $k := slice 7 8 9 }}
+        <optgroup label="Kelas {{ $k }}">
+          {{ range hugo.Data.bab }}{{ if eq .kelas $k }}<option value="{{ .slug }}" data-kelas="{{ $k }}">{{ .nama }}</option>{{ end }}{{ end }}
+        </optgroup>
+        {{ end }}
+      </select>
+    </div>
+    <div>
+      <label for="f-sulit">Tingkat kesulitan</label>
+      <select id="f-sulit" data-filter="kesulitan">
+        <option value="">Semua tingkat</option>
+        <option value="Mudah">Mudah</option>
+        <option value="Sedang">Sedang</option>
+        <option value="Sulit">Sulit</option>
+      </select>
+    </div>
+  </form>
+  <p class="ringkasan-filter" data-ringkasan-filter aria-live="polite"></p>
+
+  <section class="bagian" style="padding-top:10px">
+    <div class="grid" id="grid-arsip">
+      {{ range .Pages }}
+      <div data-kartu data-kelas="{{ with .Params.kelas }}{{ index . 0 }}{{ end }}" data-bab="{{ with .Params.bab }}{{ index . 0 }}{{ end }}" data-kesulitan="{{ .Params.kesulitan }}">
+        {{ partial "kartu.html" . }}
+      </div>
+      {{ end }}
+    </div>
+    {{ if not .Pages }}<p>Belum ada tanya jawab yang diterbitkan.</p>{{ end }}
+    <p id="arsip-kosong" hidden>Tidak ada tanya jawab yang cocok dengan saringan ini. Coba longgarkan pilihannya, atau ajukan pertanyaanmu lewat halaman <a href="/bertanya/">Bertanya</a>.</p>
+  </section>
+</div>
+{{ end }}

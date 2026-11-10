@@ -1,0 +1,64 @@
+{{ define "main" }}
+<div class="bungkus">
+  <div class="halaman">
+    <h1>{{ .Title }}</h1>
+    {{ .Content }}
+
+    {{ $kunci := .Site.Params.web3formsKey }}
+    {{ $aktif := and $kunci (ne $kunci .Site.Params.web3formsPlaceholder) }}
+    {{ if not $aktif }}
+    <div class="peringatan"><strong>Formulir belum aktif.</strong> Kunci akses layanan formulir (Web3Forms) untuk situs ini belum dipasang, sehingga pertanyaan belum bisa dikirim. Bagian ini akan aktif sebelum situs dirilis.</div>
+    {{ end }}
+
+    <form class="formulir" data-formulir data-subjek="Pertanyaan baru — Tanya Matematika SMP">
+      <div>
+        <label for="f-nama">Nama samaran *</label>
+        <input type="text" id="f-nama" name="nama_samaran" required maxlength="60" placeholder="Misalnya: Bintang, Siswa Kelas 8, Ibu Guru">
+        <p class="petunjuk">Nama inilah yang akan tampil di situs bila jawaban terbit. Jangan memakai nama lengkapmu.</p>
+      </div>
+      <div>
+        <label for="f-kelas">Kelas *</label>
+        <select id="f-kelas" name="kelas" required>
+          <option value="">— Pilih kelas —</option>
+          <option value="Kelas 7">Kelas 7</option>
+          <option value="Kelas 8">Kelas 8</option>
+          <option value="Kelas 9">Kelas 9</option>
+          <option value="Lainnya">Lainnya (guru / orang tua / di luar SMP)</option>
+        </select>
+      </div>
+      <div>
+        <label for="f-bab">Bab materi *</label>
+        <select id="f-bab" name="bab" required>
+          <option value="">— Pilih bab sesuai kelasmu —</option>
+          {{ range $k := slice 7 8 9 }}
+          <optgroup label="Kelas {{ $k }}">
+            {{ range hugo.Data.bab }}{{ if eq .kelas $k }}<option value="Kelas {{ $k }} — {{ .nama }}">Kelas {{ $k }} — {{ .nama }}</option>{{ end }}{{ end }}
+          </optgroup>
+          {{ end }}
+          <option value="Belum tahu / lainnya">Belum tahu / lainnya</option>
+        </select>
+        <p class="petunjuk">Pembagian bab mengikuti bab-bab pada platform Atiga. Bila belum yakin, pilih "Belum tahu / lainnya" — redaksi akan menempatkannya.</p>
+      </div>
+      <div>
+        <label for="f-email">Email (opsional)</label>
+        <input type="email" id="f-email" name="email" maxlength="120" placeholder="nama@email.com">
+        <p class="petunjuk">Hanya untuk pemberitahuan saat jawabanmu terbit. Tidak pernah ditampilkan ke publik.</p>
+      </div>
+      <div>
+        <label for="f-tanya">Pertanyaanmu *</label>
+        <textarea id="f-tanya" name="pertanyaan" required maxlength="4000" placeholder="Tuliskan soalnya dengan lengkap beserta angka dan satuannya. Bila soalnya bergambar, tuliskan juga keterangan gambarnya dengan kata-kata (misalnya: segitiga siku-siku di B, sisi miringnya 5 m)."></textarea>
+        <p class="petunjuk">Untuk sementara pertanyaan ditulis sebagai teks — situs ini belum menerima kiriman foto soal. Semakin lengkap soalnya, semakin tepat jawabannya.</p>
+      </div>
+      <label class="cek">
+        <input type="checkbox" id="f-setuju" required>
+        <span>Saya setuju pertanyaan saya disunting dan diterbitkan di situs ini tanpa identitas pribadi saya. *</span>
+      </label>
+      <input type="checkbox" name="botcheck" class="jebakan" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div>
+        <button class="tombol" type="submit" {{ if not $aktif }}disabled{{ end }}>Kirim Pertanyaan</button>
+      </div>
+      <p class="status-kirim" data-status-kirim aria-live="polite"></p>
+    </form>
+  </div>
+</div>
+{{ end }}

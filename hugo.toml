@@ -1,0 +1,54 @@
+baseURL = "https://tanya-matematika.aantriono.com/"
+locale = "id-ID"
+defaultContentLanguage = "id"
+title = "Tanya Matematika SMP"
+summary = "Belajar matematika langkah demi langkah, sampai paham."
+
+[params]
+  tagline = "Belajar matematika langkah demi langkah, sampai paham."
+  description = "Tanya Matematika SMP — situs tanya jawab soal matematika jenjang SMP yang dikelola Aan Triono, S.Pd. Pertanyaan diseleksi, dijawab langkah demi langkah, ditinjau, lalu diterbitkan."
+  pengelola = "Aan Triono, S.Pd."
+  # Kunci akses Web3Forms untuk situs ini BELUM dibuat. Nilai di bawah ini PLACEHOLDER.
+  # Selama nilainya masih placeholder ini, formulir menampilkan pemberitahuan "belum aktif"
+  # dan tombol kirim nonaktif. Ganti dengan kunci Web3Forms baru sebelum situs dirilis.
+  web3formsKey = "GANTI-DENGAN-KUNCI-WEB3FORMS-BARU"
+  web3formsPlaceholder = "GANTI-DENGAN-KUNCI-WEB3FORMS-BARU"
+  # Alamat situs blog utama (payung)
+  blogUtama = "https://www.aantriono.com/"
+
+[taxonomies]
+  kelas = "kelas"
+  bab = "bab"
+  tag = "tags"
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+    [markup.goldmark.extensions]
+      [markup.goldmark.extensions.passthrough]
+        enable = true
+        [markup.goldmark.extensions.passthrough.delimiters]
+          block = [["$$", "$$"], ["\\[", "\\]"]]
+          inline = [["$", "$"], ["\\(", "\\)"]]
+
+[menu]
+  [[menu.main]]
+    name = "Beranda"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    name = "Kelas & Bab"
+    url = "/kelas/"
+    weight = 2
+  [[menu.main]]
+    name = "Semua Tanya Jawab"
+    url = "/tanya-jawab/"
+    weight = 3
+  [[menu.main]]
+    name = "Tentang"
+    url = "/tentang/"
+    weight = 4

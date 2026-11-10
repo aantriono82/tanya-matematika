@@ -1,0 +1,48 @@
+{{ define "main" }}
+<div class="bungkus">
+  {{ if eq .Data.Plural "kelas" }}
+  <div class="judul-halaman">
+    <h1>Kelas &amp; Bab</h1>
+    <p>Pembagian materi mengikuti bab-bab pada platform Atiga. Pilih kelas untuk melihat bab-babnya dan semua tanya jawab di kelas itu.</p>
+  </div>
+  <section class="bagian" style="padding-top:26px">
+    {{ $semua := where .Site.RegularPages "Section" "tanya-jawab" }}
+    <div class="grid grid-kelas">
+      {{ range $k := slice 7 8 9 }}
+      {{ $n := 0 }}
+      {{ range $semua }}{{ if in (.Params.kelas | default slice) (printf "%d" $k) }}{{ $n = add $n 1 }}{{ end }}{{ end }}
+      <div class="kartu kartu-kelas">
+        <h3><a href="/kelas/{{ $k }}/" style="color:inherit">Kelas {{ $k }}</a></h3>
+        <ul class="daftar-bab">
+          {{ range hugo.Data.bab }}{{ if eq .kelas $k }}<li><a href="/bab/{{ .slug }}/">{{ .nama }}</a></li>{{ end }}{{ end }}
+        </ul>
+        <p class="meta"><span class="jumlah">{{ $n }}</span> tanya jawab</p>
+      </div>
+      {{ end }}
+    </div>
+  </section>
+  {{ else }}
+  <div class="judul-halaman">
+    <h1>Semua Bab</h1>
+    <p>Tiga puluh bab materi matematika SMP, dikelompokkan per kelas mengikuti pembagian Atiga.</p>
+  </div>
+  <section class="bagian" style="padding-top:26px">
+    {{ $semua := where .Site.RegularPages "Section" "tanya-jawab" }}
+    {{ range $k := slice 7 8 9 }}
+    <h2 class="judul-kelompok">Kelas {{ $k }}</h2>
+    <div class="grid">
+      {{ range hugo.Data.bab }}{{ if eq .kelas $k }}
+      {{ $slug := .slug }}{{ $n := 0 }}
+      {{ range $semua }}{{ if in (.Params.bab | default slice) $slug }}{{ $n = add $n 1 }}{{ end }}{{ end }}
+      <div class="kartu kartu-kategori">
+        <h3><a href="/bab/{{ $slug }}/" style="color:inherit">{{ .nama }}</a></h3>
+        <p>{{ .deskripsi }}</p>
+        <p class="meta"><span class="jumlah">{{ $n }}</span> tanya jawab</p>
+      </div>
+      {{ end }}{{ end }}
+    </div>
+    {{ end }}
+  </section>
+  {{ end }}
+</div>
+{{ end }}
