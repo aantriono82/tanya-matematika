@@ -5,10 +5,10 @@ kelas: ["8"]
 bab: ["teorema-pythagoras"]
 kesulitan: "Sedang"
 tags: ["pythagoras", "segitiga-siku-siku", "soal-cerita"]
-penanya: "Redaksi (contoh tampilan)"
+penanya: "Redaksi (arsip awal)"
 ringkasan: "Ujung tangga mencapai tinggi 4 m. Dinding, tanah, dan tangga membentuk segitiga siku-siku dengan sisi 3–4–5, sehingga tingginya dicari dengan teorema Pythagoras: t = √(5² − 3²) = 4 m."
 populer: true
-contoh: true
+contoh: false
 draft: false
 ---
 

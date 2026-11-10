@@ -1,5 +1,5 @@
 ---
-title: "Bagaimana menyederhanakan $5x+3-2x+7$, dan apa itu suku sejenis?"
+title: "Bagaimana menyederhanakan 5x + 3 − 2x + 7, dan apa itu suku sejenis?"
 date: 2026-11-10
 kelas: ["7"]
 bab: ["bentuk-aljabar"]

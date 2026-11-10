@@ -1,5 +1,5 @@
 ---
-title: "Mengapa $\\frac12+\\frac13$ bukan $\\frac25$?"
+title: "Mengapa ½ + ⅓ bukan ⅖?"
 date: 2026-11-10
 kelas: ["7"]
 bab: ["bilangan-rasional"]

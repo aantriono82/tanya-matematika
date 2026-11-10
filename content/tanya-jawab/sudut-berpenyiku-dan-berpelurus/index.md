@@ -1,5 +1,5 @@
 ---
-title: "Dua sudut saling berpenyiku, satu sudut $35^\\circ$ — berapa sudut lainnya, dan apa bedanya dengan berpelurus?"
+title: "Dua sudut saling berpenyiku, satu sudut 35° — berapa sudut lainnya, dan apa bedanya dengan berpelurus?"
 date: 2026-11-10
 kelas: ["7"]
 bab: ["garis-dan-sudut"]

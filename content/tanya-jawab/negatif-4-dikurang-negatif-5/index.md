@@ -1,12 +1,12 @@
 ---
-title: "Mengapa $-4-(-5)$ hasilnya $1$, bukan $-9$?"
+title: "Mengapa −4 − (−5) hasilnya 1, bukan −9?"
 date: 2026-11-10
 kelas: ["7"]
 bab: ["bilangan-bulat"]
 kesulitan: "Sedang"
 tags: ["bilangan-bulat", "operasi-hitung", "garis-bilangan"]
 penanya: "Redaksi (arsip awal)"
-ringkasan: "Karena mengurangkan bilangan negatif sama artinya dengan menambahkan lawannya: $-4-(-5) = -4+5 = 1$. Hasil $-9$ muncul bila tanda negatif kedua ikut dijumlahkan, padahal yang benar berbalik arah."
+ringkasan: "Karena mengurangkan bilangan negatif sama artinya dengan menambahkan lawannya: −4 − (−5) = −4 + 5 = 1. Hasil −9 muncul bila tanda negatif kedua ikut dijumlahkan, padahal yang benar berbalik arah."
 populer: false
 contoh: false
 draft: false

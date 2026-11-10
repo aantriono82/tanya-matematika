@@ -1,5 +1,5 @@
 ---
-title: "Menyelesaikan $x+7=15$: mengapa kedua ruas sama-sama dikurangi 7?"
+title: "Menyelesaikan x + 7 = 15: mengapa kedua ruas sama-sama dikurangi 7?"
 date: 2026-11-10
 kelas: ["7"]
 bab: ["persamaan-linear-satu-variabel"]
